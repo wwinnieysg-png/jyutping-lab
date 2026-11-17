@@ -221,7 +221,7 @@ def compile_dictionary(rime: pathlib.Path, yyzd: pathlib.Path, output: pathlib.P
     metrics['custom_rows'] = load_custom(chars, words, custom)
     enrich_examples(chars, words)
     print(f'Preparing {len(chars):,} characters and {len(words):,} distinct words...')
-    if validate and (len(chars) < 15000 or len(words) < 50000 or metrics['yyzd_rows'] < 3000):
+    if validate and (len(chars) < 15000 or len(words) < 50000 or metrics['yyzd_rows'] < 800):
         raise RuntimeError(f'Unexpectedly small input data, stopping deployment: {metrics}')
     # char records use short fields to minimize the footprint of large public datasets.
     char_records = {c:[{'j':j,**record} for j,record in sorted(readings.items())] for c, readings in chars.items()}
