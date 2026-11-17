@@ -1,37 +1,32 @@
-
 name: Build Cantonese dictionary and deploy GitHub Pages
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: pages
   cancel-in-progress: true
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Jyutping-Lab-v0.4.1
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout the website
         uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
       - name: Download open-source dictionaries and compile indexes
         run: python build_dictionary.py
-
       - name: Validate generated data
         run: |
           python - <<'PY'
@@ -40,20 +35,16 @@ jobs:
           assert m['built'] and m['unique_characters'] >= 15000 and m['unique_words'] >= 50000
           print(m)
           PY
-
       - name: Prepare static distribution
         run: |
           mkdir -p _site
           cp index.html styles.css app.js dictionary.js _site/
           cp -r assets data _site/
           touch _site/.nojekyll
-
       - uses: actions/configure-pages@v5
-
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
-
+          path: Jyutping-Lab-v0.4.1/_site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
