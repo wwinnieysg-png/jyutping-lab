@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#96b8c9">
+<meta name="description" content="粵音修正所：查找粵拼、同音字及詞例，一鍵複製注音，修正廣東話 TTS 講稿。">
+<title>粵音修正所 | Jyutping Studio</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#dictionary">跳至查字功能</a>
+<header class="site-header">
+  <a class="logo" href="#top" aria-label="粵音修正所首頁"><span class="logo-mark" aria-hidden="true">粵</span><span class="logo-text">粵音修正所 <small>JYUTPING STUDIO</small></span></a>
+  <nav aria-label="主選單" class="nav-links"><a href="#dictionary">查字字庫</a><a href="#editor">講稿修正</a><a class="nav-about" href="#about">關於本站</a></nav>
+  <span class="header-edition">EDITION  /  04</span>
+</header>
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="orb-layer" aria-hidden="true">
+      <img class="orb orb-pink" src="assets/pink.webp" alt="">
+      <img class="orb orb-lemon" src="assets/lemon.webp" alt="">
+      <img class="orb orb-aqua" src="assets/aqua.webp" alt="">
+      <img class="orb orb-coral" src="assets/coral.webp" alt="">
+      <img class="orb orb-lilac" src="assets/lilac.webp" alt="">
+      <img class="orb orb-rose" src="assets/rose.webp" alt="">
+      <svg class="fine-lines" viewBox="0 0 1440 680" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true"><path d="M-60 390 L720 646 L1460 20 M340 -80 L1254 740 M-100 92 L880 488 L1490 594" fill="none" stroke="white" stroke-width="1" opacity=".21"/></svg>
+    </div>
+    <div class="hero-inner">
+      <p class="overline hero-overline">CANTONESE DICTIONARY · PRONUNCIATION STUDIO</p>
+      <h1 id="hero-title">每個字，<br><span>都值得讀準。</span></h1>
+      <p class="hero-copy">從粵拼到完整講稿。<br>為每一句廣東話，搵返最合適嘅聲音。</p>
+      <a class="hero-jump" href="#dictionary" aria-label="向下捲動，開始查字"><span class="jump-icon">↓</span><span>開始探索</span></a>
+    </div>
+    <div class="hero-bottom"><span>PRONUNCIATION · MEANING · CONTEXT</span><span>SCROLL TO EXPLORE ↓</span></div>
+  </section>
+  <section id="dictionary" class="workspace" aria-labelledby="lookup-title">
+    <div class="section-meta"><span>01  /  LOOKUP</span><span>字詞 · 音節 · 語義</span></div>
+    <div class="section-intro"><div><p class="overline">THE SOUND OF A WORD</p><h2 id="lookup-title">一字多音，<br>一眼分清。</h2></div><p>輸入漢字、詞語或粵拼，睇清每個讀音背後嘅意思同用法，再一鍵複製成適合放入 TTS 講稿嘅形式。</p></div>
+    <form id="search-form" class="search-form" role="search"><label for="search-input" class="sr-only">搜尋漢字、詞語或粵拼</label><span class="search-symbol" aria-hidden="true">⌕</span><input id="search-input" name="query" value="行" autocomplete="off" placeholder="試吓搜尋「銀行」、行、haang4…"><button class="search-button" type="submit">搜尋 <span aria-hidden="true">↗</span></button></form>
+    <div class="search-options"><div class="suggestions"><span class="utility-label">TRY</span><button type="button" data-query="行">行</button><button type="button" data-query="銀行">銀行</button><button type="button" data-query="我哋">我哋</button><button type="button" data-query="重">重</button><button type="button" data-query="haang4">haang4</button></div><div class="format-wrap"><label for="copy-format">複製格式</label><select id="copy-format" aria-label="複製格式"><option value="paren">(hang4)</option><option value="plain">hang4</option><option value="annotate">行(hang4)</option><option value="slash">行/(hang4)</option></select></div></div>
+    <p id="data-status" class="load-status" aria-live="polite">正在檢查字庫…</p>
+    <div class="results-head"><h3>字音探索 <span id="search-caption">搜尋結果</span></h3><span id="result-count" aria-live="polite"></span></div>
+    <div id="results" class="results" aria-live="polite"></div>
+    <p class="data-note" id="dictionary-note">尚未生成完整字庫時，網站會以示範資料運作。上傳 GitHub 並完成 Actions 建置後會自動使用 Rime Cantonese、開放粵語字典及開發者補充詞庫。</p>
+  </section>
+  <section id="editor" class="editor-band" aria-labelledby="editor-title">
+    <div class="editor-wrap"><div class="section-meta"><span>02  /  SCRIPT TOOL</span><span>從字音到語句</span></div>
+      <div class="section-intro editor-intro"><div><p class="overline">MAKE EVERY LINE SOUND RIGHT</p><h2 id="editor-title">寫好一句，<br>讀準一句。</h2></div><p>貼入廣東話講稿，選取需要修正嘅單字，揀讀音並套用。亦可以一鍵轉換常見書面語表達。</p></div>
+      <div class="editor-grid"><div class="script-pane"><div class="pane-head"><label for="script-input">講稿編輯</label><span>SELECT A CHARACTER TO ANNOTATE</span></div><textarea id="script-input" spellcheck="false" rows="8">我們今日去銀行，之後行街。</textarea><div class="editor-actions"><button type="button" id="convert-btn">書面語轉粵語口語 ↗</button><button type="button" id="undo-btn">還原</button><button type="button" id="reset-btn">重設例句</button></div></div><aside class="sound-pane" aria-live="polite"><div class="pane-head"><span>讀音選擇</span><span>PRONUNCIATION PICKER</span></div><div id="selection-panel" class="selection-panel"><span class="selection-glyph" aria-hidden="true">字</span><p>先喺左邊講稿中選取一個漢字。</p><small>選取後會顯示已收錄讀音。</small></div></aside></div>
+      <div class="editor-output"><div><p class="overline">READY TO COPY</p><div id="script-output" class="script-output" aria-live="polite"></div></div><button id="copy-script" type="button">複製完整講稿 <span aria-hidden="true">↗</span></button></div>
+      <p class="data-note">自動轉換只涵蓋指定詞組，需要人工校對語境。括號粵拼屬可測試嘅輸出格式，唔代表 MiniMax 必定照讀。</p>
+    </div>
+  </section>
+  <section id="about" class="about-block" aria-labelledby="about-title"><div class="section-meta"><span>03  /  ABOUT</span><span>簡單，夠用，就好</span></div><div class="about-grid"><h2 id="about-title">畀文字一個<br>啱嘅讀法。</h2><div><p>粵音修正所係一個針對廣東話 Text-to-Speech 嘅前端工具實驗。設計靈感來自日系實驗型網站嘅留白、柔色視覺同輕微動態，但查字與修正流程保持清晰易用。</p><p>網站毋須 Firebase 或登入。字庫透過 GitHub Actions 下載及整理，再由 GitHub Pages 靜態提供；自訂字詞可喺 custom-words.csv 直接編輯。講稿草稿與複製格式只保留於你目前嘅瀏覽器。</p><p class="external-links"><a href="https://peach.arts.cuhk.edu.hk/Lexis/lexi-can/main.php" target="_blank" rel="noopener noreferrer">中大審音配詞字庫 ↗</a><a href="https://github.com/kfcd/yyzd" target="_blank" rel="noopener noreferrer">開放粵語字典 ↗</a><a href="https://github.com/rime/rime-cantonese" target="_blank" rel="noopener noreferrer">Rime 粵拼詞庫 ↗</a></p></div></div></section>
+</main>
+<footer class="footer"><span>粵音修正所 / JYUTPING STUDIO</span><span>OPEN DICTIONARY · V0.4.1</span><a href="#top">回到頂部 ↑</a></footer>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<script src="dictionary.js" defer></script><script src="app.js" defer></script>
+</body></html>
